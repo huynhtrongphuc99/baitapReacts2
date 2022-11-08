@@ -77,19 +77,33 @@ export default class Home extends Component {
             "desc": "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. "
         }
     ]
-    InfoProduct = ()=>{
-        const html = ()=>{
-            return 
-        }
+    InfoProduct = (i)=>{
+        const html = this.Product.map((item)=>{
+            console.log(item.price)
+            if(item.id===i){
+                return ( 
+                    <div className={style.text}>
+                        <p>Price : {item.price}</p>
+                        <h3>Name : {item.name}</h3>
+                        <p> {item.desc}</p>
+                    </div>
+                )
+            }
+        })
+        return html
     }
  state ={
-    Img : v1
+    Img : v1,
+    i:1
    }
-   ChoiceImg=(img)=>{
+   ChoiceImg=(img,index)=>{
 this.setState({
-    Img : img
+    Img : img,
+    i:index
+
 })
    }
+//    console.log()
   render() {
     return (
       <div className={style.product}>
@@ -101,11 +115,8 @@ this.setState({
             <div className={style.body}>
                 <div className={style.imgLeft}>
                     <img src={model} alt=''/>
-                        <div className={style.text}>
-                            
-                      
-
-                        </div>
+                       {/* {()=>{this.InfoProduct(i)}} */}
+                       {this.InfoProduct(this.state.i)}
                 </div>
                 <div className={style.right}>
                 <img src={model} alt=''/>
@@ -115,15 +126,15 @@ this.setState({
                 </div>
             </div>
         <div className={style.table}>
-            <img onClick={()=>{this.ChoiceImg(v1)}}  src={v1} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v2)}} src={v2} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v3)}} src={v3} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v4)}} src={v4} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v5)}} src={v5} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v6)}} src={v6} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v7)}} src={v7} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v8)}} src={v8} alt=''/>
-            <img onClick={()=>{this.ChoiceImg(v9)}} src={v9} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v1,1)}}  src={v1} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v2,2)}} src={v2} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v3,3)}} src={v3} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v4,4)}} src={v4} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v5,5)}} src={v5} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v6,6)}} src={v6} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v7,7)}} src={v7} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v8,8)}} src={v8} alt=''/>
+            <img onClick={()=>{this.ChoiceImg(v9,9)}} src={v9} alt=''/>
 
 
         </div>
